@@ -15,11 +15,9 @@ public:
 
 	~Game();
 
-	void intialize();
+	void initialize();
 	void run();
 
-
-	sf::Clock clock;
 
 
 };

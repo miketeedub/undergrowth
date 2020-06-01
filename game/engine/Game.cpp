@@ -6,7 +6,7 @@ Game::~Game()
 }
 
 
-void Game::intialize()
+void Game::initialize()
 {
 }
 

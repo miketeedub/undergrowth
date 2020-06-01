@@ -4,6 +4,7 @@
 #include "Animation.hpp"
 
 #include <SFML/Graphics.hpp>
+#include "EntityBase.hpp"
 
 
 class GameLoop 

@@ -1,0 +1,12 @@
+	
+
+
+class TextureManager
+{
+
+public:
+	TextureManager()
+	{};
+
+	
+};
