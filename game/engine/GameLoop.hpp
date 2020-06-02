@@ -5,7 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "EntityBase.hpp"
-
+#include "TextureManager.hpp"
 
 class GameLoop 
 {

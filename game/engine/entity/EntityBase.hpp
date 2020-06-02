@@ -8,27 +8,17 @@
 
 
 
-class EntityBase
+class EntityBase : public sf::Sprite
 {
-	
-public: 
-	
+public: 	
 	
 	EntityBase()
 
 	{};
 
-
-	void createShape(float radius);
-	void createShape(sf::Vector2f size);
 	void test(void);
-	std::unique_ptr<sf::Shape> shape_;
-
 	
 };
-
-
-
 
 
 #endif
