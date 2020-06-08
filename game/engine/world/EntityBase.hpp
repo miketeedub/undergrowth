@@ -21,7 +21,7 @@ public:
 	
 
 	Animation animation_;
-	virtual void update(float deltaTime);
+	virtual void update(int row, float deltaTime);
 	
 };
 

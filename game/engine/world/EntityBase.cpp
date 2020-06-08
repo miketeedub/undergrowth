@@ -1,6 +1,8 @@
 
 #include "EntityBase.hpp"
 
-void EntityBase::update(float deltaTime)
+void EntityBase::update(int row, float deltaTime)
 {
+	animation_.update(row, deltaTime);
+	setTextureRect(animation_.uvRect);
 }

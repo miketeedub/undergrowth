@@ -12,8 +12,7 @@
 class SpriteFactory 
 {
 public:
-	SpriteFactory(TextureManager textures) :
-		textures_(textures)
+	SpriteFactory() 
 	{};
 
 

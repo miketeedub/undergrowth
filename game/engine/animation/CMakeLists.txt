@@ -9,6 +9,7 @@ SET(SOURCE
 SET(HEADERS
 	Animation.hpp
 	TextureManager.hpp
+	TextureDefs.hpp
 	)
 
 add_library(Animation STATIC
