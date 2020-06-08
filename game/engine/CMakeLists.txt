@@ -20,11 +20,11 @@ add_library(Engine STATIC
 			${HEADERS})
 
 
-add_subdirectory(entity)
+add_subdirectory(world)
 add_subdirectory(animation)
 target_link_libraries(Engine sfml-graphics sfml-audio World)
 target_include_directories(Engine PUBLIC ${CMAKE_SOURCE_DIR}/game/engine/animation)
-target_include_directories(Engine PUBLIC ${CMAKE_SOURCE_DIR}/game/engine/entity)
+target_include_directories(Engine PUBLIC ${CMAKE_SOURCE_DIR}/game/engine/world)
 
 
 

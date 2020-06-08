@@ -1,6 +1,8 @@
-	
+#ifndef TEXTURE_MANAGER_H
+#define TEXTURE_MANAGER_H
+
+
 #include <SFML/Graphics.hpp>
-#include <memory>
 
 
 
@@ -11,9 +13,11 @@ struct TextureManager
 public:
 	TextureManager()
 	{
-		playerTexture.loadFromFile("../sprites/test_guy.png");
+		playerTexture.loadFromFile("../spriteImgs/test_guy.png");
 	};
 
 	sf::Texture playerTexture;
 	
 };
+
+#endif // !TEXTURE_MANAGER_H

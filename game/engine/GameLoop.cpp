@@ -3,7 +3,6 @@
 
 #include "GameLoop.hpp"
 
-
 GameLoop::~GameLoop()
 {
 }
@@ -23,23 +22,23 @@ void GameLoop::loop(void)
 void GameLoop::run(sf::RenderWindow& window)
 {
 	
-	TextureManager textures;
+	std::shared_ptr<TextureManager> textures(new TextureManager);
 
-	EntityBase player0;
+	SpriteFactory spriteFactory(*textures);
+
+	EntityBase player0 = spriteFactory.createSprite(MainCharacterType);
+/*TODO: create a "Character.hpp" class that inherts from EntityBase and implements pure virtual functions, 
+entity base will go to both characters and plants, will create abstract factory for both plants and characers*/
+
 	player0.setScale(4.0f, 4.0f);
-
-	//player0.createShape(100.0f);
 
 	EntityBase player;
 	
-	//player.createShape(sf::Vector2f(100.0f, 100.0f));
 
-
-
-	player0.setTexture(textures.playerTexture);
-	player.setTexture(textures.playerTexture);
+	player0.setTexture(textures->playerTexture);
+	player.setTexture(textures->playerTexture);
 	
-	Animation animation(&textures.playerTexture, sf::Vector2u(2, 1), 0.3f);
+	Animation animation(&textures->playerTexture, sf::Vector2u(2, 1), 0.3f);
 	float deltaTime = 0.0f;
 	sf::Clock clock;
 
