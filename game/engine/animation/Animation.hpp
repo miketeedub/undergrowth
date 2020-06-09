@@ -3,7 +3,7 @@
 #define ANIMATION_H
 
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 
 class Animation
