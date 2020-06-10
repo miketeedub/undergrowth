@@ -10,11 +10,13 @@ class MainCharacter : public EntityBase
 public:
 	MainCharacter()
 	{};
-	MainCharacter(sf::Texture* texture, sf::Vector2u imageCount, float switchTime) :
-		EntityBase(Animation(texture, imageCount, switchTime))
+	MainCharacter(sf::Texture* texture, TextureManager& textures, TextureEnum textureType, sf::Vector2u imageCount, float switchTime) :
+		EntityBase(Animation(texture, imageCount, switchTime), &textures, textureType)
 	{
 		this->setTexture(*texture);
 	};
+	
+
 	
 };
 

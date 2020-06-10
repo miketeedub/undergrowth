@@ -12,14 +12,15 @@
 class SpriteFactory 
 {
 public:
-	SpriteFactory() 
+	SpriteFactory(TextureManager* textures) :
+		textures_(textures)
 	{};
 
 
 
 public:
 	EntityBase createSprite(SpriteTypes spriteType);
-	TextureManager textures_;
+	TextureManager* textures_;
 
 };
 

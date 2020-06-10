@@ -12,6 +12,7 @@ sf::Texture* TextureManager::getTexture(TextureEnum textureName)
 		return loadTexture(textureName, MAIN_CHARACTER_PATH);
 		 
 
+
 	}
 }
 
@@ -28,3 +29,14 @@ sf::Texture* TextureManager::loadTexture(TextureEnum textureName, std::string pa
 		return playerTexture;
 	}
 }
+
+void TextureManager::spriteReleaseTexture(TextureEnum textureName)
+{
+	textureMap_[textureName].count_--;
+	if (textureMap_[textureName].count_ == 0)
+	{
+		textureMap_.erase(textureName);	
+	}
+}
+
+

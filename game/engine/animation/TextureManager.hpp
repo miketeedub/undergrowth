@@ -41,6 +41,7 @@ public:
 
 	sf::Texture* loadTexture(TextureEnum textureName, std::string path);
 
+	void spriteReleaseTexture(TextureEnum textureName);
 };
 
 #endif // !TEXTURE_MANAGER_H
