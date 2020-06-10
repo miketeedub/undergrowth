@@ -8,7 +8,8 @@
 class MainCharacter : public EntityBase
 {
 public:
-	MainCharacter()
+	MainCharacter(TextureManager* textureMgr)
+    : EntityBase(textureMgr)
 	{};
 	MainCharacter(sf::Texture* texture, TextureManager& textures, TextureEnum textureType, sf::Vector2u imageCount, float switchTime) :
 		EntityBase(Animation(texture, imageCount, switchTime), &textures, textureType)

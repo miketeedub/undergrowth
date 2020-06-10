@@ -12,8 +12,8 @@
 class EntityBase : public sf::Sprite
 {
 public: 	
-	EntityBase():
-		textures_(&TextureManager())
+	EntityBase(TextureManager* textureMgr):
+		textures_(textureMgr)
 	{};
 	EntityBase(Animation animation, TextureManager* textures, TextureEnum currentTexture) :
 		animation_(animation)
