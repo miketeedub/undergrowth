@@ -21,8 +21,9 @@ void GameLoop::loop(void)
 
 void GameLoop::run(sf::RenderWindow& window)
 {
+	TextureManager textures;
 
-	SpriteFactory spriteFactory;
+	SpriteFactory spriteFactory(&textures);
 
 	EntityBase player0 = spriteFactory.createSprite(MainCharacterType);
 
