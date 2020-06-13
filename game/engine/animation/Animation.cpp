@@ -19,20 +19,36 @@ Animation::~Animation()
 {
 }
 
-void Animation::update(int row, float deltaTime)
+void Animation::setIndex(int startIndex, int endIndex)
 {
-	currentImage.y = row;
+	index_.start = startIndex;
+	index_.end = endIndex;
+	index_.current = 0;
+}
+
+
+
+
+
+void Animation::update(float deltaTime)
+{
+	
+
 	totalTime += deltaTime;
 
 	if (totalTime >= switchTime)
 	{
 		totalTime -= switchTime;
-		currentImage.x++;
+		currentImage.y = static_cast<int> (index_.current / imageCount.x);
+		currentImage.x = index_.current % imageCount.x;
+		
+		index_.current++;
 
-		if (currentImage.x >= imageCount.x)
+		if (index_.current > index_.end)
 		{
-		currentImage.x = 0;
+			index_.current = 0;
 		}
+		
 	}
 
 	uvRect.left = currentImage.x * uvRect.width;

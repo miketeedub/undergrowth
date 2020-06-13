@@ -15,6 +15,7 @@ public:
 		EntityBase(Animation(texture, imageCount, switchTime), &textures, textureType)
 	{
 		this->setTexture(*texture);
+		this->animation_.setIndex(0, 1);
 	};
 	
 
