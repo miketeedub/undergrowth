@@ -29,8 +29,6 @@ void Animation::setIndex(int startIndex, int endIndex, float animationTime)
 
 
 
-
-
 void Animation::update(float deltaTime)
 {
 	
