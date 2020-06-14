@@ -1,42 +1,53 @@
 #include "TextureManager.hpp"
 
-sf::Texture* TextureManager::getTexture(TextureEnum textureName)
-{
-	if (textureMap_.find(textureName) != textureMap_.end())
+namespace Textures {
+	TextureValue* TextureManager::getTexture(TextureEnum textureName)
 	{
-		textureMap_[textureName].count_++;
-		return textureMap_[textureName].texture_;
+		if (textureMap_.find(textureName) != textureMap_.end())
+		{
+			textureMap_[textureName].count_++;
+			return &textureMap_[textureName];
+		}
+		else
+		{
+			if (loadTexture(textureName))
+			{
+				getTexture(textureName);
+			}
+			else
+			{
+				//TODO: exception handling
+			}
+
+		}
 	}
-	else
+
+	bool TextureManager::loadTexture(TextureEnum textureName)
 	{
-		return loadTexture(textureName, MAIN_CHARACTER_PATH);
-		 
+
+		sf::Texture* playerTexture = new sf::Texture();
+		TextureValue texture(playerTexture, textureInfo_.getFrameDims(textureName));
 
 
+		if (playerTexture->loadFromFile(textureInfo_.getPath(textureName)))
+		{
+			textureMap_[textureName] = texture;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
+
+	void TextureManager::spriteReleaseTexture(TextureEnum textureName)
+	{
+		textureMap_[textureName].count_--;
+		if (textureMap_[textureName].count_ == 0)
+		{
+			textureMap_.erase(textureName);
+		}
+	}
+
+
 }
-
-sf::Texture* TextureManager::loadTexture(TextureEnum textureName, std::string path)
-{
-	
-	sf::Texture* playerTexture = new sf::Texture();
-	TextureValue texture(playerTexture);
-
-
-	if (playerTexture->loadFromFile(path))
-	{
-		textureMap_[textureName] = texture;
-		return playerTexture;
-	}
-}
-
-void TextureManager::spriteReleaseTexture(TextureEnum textureName)
-{
-	textureMap_[textureName].count_--;
-	if (textureMap_[textureName].count_ == 0)
-	{
-		textureMap_.erase(textureName);	
-	}
-}
-
-

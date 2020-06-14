@@ -5,41 +5,47 @@
 #include <SFML/Graphics.hpp>
 #include "TextureDefs.hpp"
 
-struct TextureValue
-{
-	TextureValue()
-	{};
-	TextureValue(sf::Texture* texture) :
-		texture_(texture)
-		,count_(1)
-	{};
+namespace Textures {
 
-	sf::Texture* texture_;
-	//count for number of active sprites using texture
-	
-	int count_;
-	~TextureValue()
+	struct TextureValue
 	{
+		TextureValue()
+		{};
+		TextureValue(sf::Texture* texture, sf::Vector2u frames) :
+			texture(texture)
+			, spriteSheetFrames(frames)
+			, count_(1)
+		{};
+
+		sf::Texture* texture;
+		sf::Vector2u spriteSheetFrames;
+		//count for number of active sprites using texture
+		int count_;
+
+		~TextureValue()
+		{
+		};
 	};
-};
 
 
-class TextureManager
-{
-public:
-	TextureManager()
-	{};
-	//TODO: load textures dynamically as needed
-	sf::Texture playerTexture;
-	
-	std::map<TextureEnum, TextureValue> textureMap_;
+	class TextureManager
+	{
+	public:
+		TextureManager()
+		{};
+		//TODO: load textures dynamically as needed
+		sf::Texture playerTexture;
 
+		std::map<TextureEnum, TextureValue> textureMap_;
 
-	sf::Texture* getTexture(TextureEnum texture);
+		TextureValue* getTexture(TextureEnum texture);
 
-	sf::Texture* loadTexture(TextureEnum textureName, std::string path);
+		TextureInfo textureInfo_;
 
-	void spriteReleaseTexture(TextureEnum textureName);
-};
+		bool loadTexture(TextureEnum textureName);
 
+		void spriteReleaseTexture(TextureEnum textureName);
+	};
+
+}
 #endif // !TEXTURE_MANAGER_H

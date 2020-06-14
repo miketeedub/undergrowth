@@ -21,7 +21,7 @@ void GameLoop::loop(void)
 
 void GameLoop::run(sf::RenderWindow& window)
 {
-	TextureManager textures;
+	Textures::TextureManager textures;
 
 	SpriteFactory spriteFactory(&textures);
 

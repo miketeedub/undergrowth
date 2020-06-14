@@ -1,28 +1,28 @@
 
 #ifndef MAIN_CHARACTER_SPRITE
 #define MAIN_CHARACTER_SPRITE
-#include <filesystem>
-#include <direct.h>
 #include "Animation.hpp"
 #include <iostream>
-#include "../EntityBase.hpp"
+#include "CharacterBase.hpp"
+#include "TextureManager.hpp"
 
-class MainCharacter : public EntityBase
+
+class MainCharacter : public CharacterBase
 {
 public:
-	MainCharacter(TextureManager* textureMgr)
-    : EntityBase(textureMgr)
+	MainCharacter()
 	{};
-	MainCharacter(sf::Texture* texture, TextureManager& textures, TextureEnum textureType, sf::Vector2u imageCount) :
-		EntityBase(Animation(texture, imageCount), &textures, textureType)
-		, walkRight_(0,6,.3f)
+
+	MainCharacter(Textures::TextureValue* texture) :
+		CharacterBase(texture)
+		
 	{
-		this->setTexture(*texture);
-		this->animation_.setIndex(0, 6, .3f);
+		this->setTexture(*texture->texture);
+		this->animation_.setAnimationIndex(0, 6, .3f);
 
 	};
 	
-	AnimationIndex walkRight_;
+	
 };
 
 #endif

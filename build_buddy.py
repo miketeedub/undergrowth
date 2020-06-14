@@ -5,6 +5,7 @@ import subprocess
 import os
 
 
+
 if __name__ == '__main__':
 	
 	parser = argparse.ArgumentParser(description="Create or build project")
@@ -18,6 +19,8 @@ if __name__ == '__main__':
 	if not (args.create or args.build):
 		parser.error("Please enter --create or --build")
 	if args.create:
+		if not os.path.isfile(cwd + "/_builds"):
+			os.mkdir(cwd + "/_builds")
 		subprocess.call(['cmake', ".."], cwd = cwd + "/_builds")
 	if args.build:
 		subprocess.call(['cmake', "--build", "."], cwd = cwd + "/_builds")

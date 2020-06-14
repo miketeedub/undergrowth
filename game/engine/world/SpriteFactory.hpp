@@ -12,7 +12,7 @@
 class SpriteFactory 
 {
 public:
-	SpriteFactory(TextureManager* textures) :
+	SpriteFactory(Textures::TextureManager* textures) :
 		textures_(textures)
 	{};
 
@@ -20,7 +20,7 @@ public:
 
 public:
 	EntityBase createSprite(SpriteTypes spriteType);
-	TextureManager* textures_;
+	Textures::TextureManager* textures_;
 
 };
 

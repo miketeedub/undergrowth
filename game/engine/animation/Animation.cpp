@@ -2,15 +2,13 @@
 #include "Animation.hpp"
 
 
-Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount)
+Animation::Animation(Textures::TextureValue* texture_)
 {
-	this->imageCount = imageCount;
-	this->switchTime = switchTime;
 	totalTime = 0.0f;
 	currentImage.x = 0;
-
-	uvRect.width = texture->getSize().x / float(imageCount.x);
-	uvRect.height = texture->getSize().y / float(imageCount.y);
+	imageFrames_ = texture_->spriteSheetFrames;
+	uvRect.width = texture_->texture->getSize().x / float(imageFrames_.x);
+	uvRect.height = texture_->texture->getSize().y / float(imageFrames_.y);
 
 }
 
@@ -19,7 +17,7 @@ Animation::~Animation()
 {
 }
 
-void Animation::setIndex(int startIndex, int endIndex, float animationTime)
+void Animation::setAnimationIndex(int startIndex, int endIndex, float animationTime)
 {
 	index_.start = startIndex;
 	index_.end = endIndex;
@@ -28,18 +26,16 @@ void Animation::setIndex(int startIndex, int endIndex, float animationTime)
 }
 
 
-
 void Animation::update(float deltaTime)
 {
 	
-
 	totalTime += deltaTime;
 
 	if (totalTime >= index_.animationTime)
 	{
 		totalTime -= index_.animationTime;
-		currentImage.y = static_cast<int> (index_.current / imageCount.x);
-		currentImage.x = index_.current % imageCount.x;
+		currentImage.y = static_cast<int> (index_.current / imageFrames_.x);
+		currentImage.x = index_.current % imageFrames_.x;
 		
 		index_.current++;
 

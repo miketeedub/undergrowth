@@ -18,9 +18,11 @@ add_library(World STATIC
 
 SET(SPRITE_SOURCE
 	characters/MainCharacter.cpp
+	characters/CharacterBase.cpp
 	)
 SET(SPRITE_HEADERS
-	characters/MainCharacter.hpp)
+	characters/MainCharacter.hpp
+	characters/CharacterBase.hpp)
 
 add_library(Sprites STATIC
 			${SPRITE_SOURCE}

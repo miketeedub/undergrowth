@@ -12,21 +12,17 @@
 class EntityBase : public sf::Sprite
 {
 public: 	
-	EntityBase(TextureManager* textureMgr):
-		textures_(textureMgr)
+	EntityBase()
 	{};
-	EntityBase(Animation animation, TextureManager* textures, TextureEnum currentTexture) :
+	EntityBase(Animation animation) :
 		animation_(animation)
-		, textures_(textures)
-		, currentTexture_(currentTexture)
 	{}
 
 	~EntityBase();
 
 	Animation animation_;
 	virtual void update(int row, float deltaTime);
-	TextureEnum currentTexture_;
-	TextureManager* textures_;
+	
 };
 
 

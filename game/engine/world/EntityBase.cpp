@@ -4,7 +4,7 @@
 EntityBase::~EntityBase()
 {
 //TODO: use like an event manager or something to release texture, dont access texture manager directly
-	textures_->spriteReleaseTexture(currentTexture_);
+	
 }
 
 void EntityBase::update(int row, float deltaTime)
