@@ -68,6 +68,7 @@ entity base will go to both characters and plants, will create abstract factory 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 		{
 			player0.move(-0.1f, 0.0f);
+			
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 		{

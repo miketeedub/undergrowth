@@ -18,7 +18,7 @@ public:
 		
 	{
 		this->setTexture(*texture->texture);
-		this->animation_.setAnimationIndex(0, 6, .3f);
+		setAnimationIndex(0, 6, .3f);
 
 	};
 	
