@@ -9,5 +9,4 @@ EntityBase SpriteFactory::createSprite(SpriteTypes spriteType)
 	case MainCharacterType:
 		return MainCharacter(textures_->getTexture(Textures::MainCharacter_Texture));
 	}
-
 }

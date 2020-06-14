@@ -9,6 +9,6 @@ public:
 		: EntityBase()
 	{};
 	CharacterBase(Textures::TextureValue* texture) :
-		EntityBase(Animation(texture))
+		EntityBase(texture)
 	{};
 };

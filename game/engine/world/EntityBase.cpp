@@ -1,13 +1,18 @@
 
 #include "EntityBase.hpp"
 
+EntityBase::EntityBase(Textures::TextureValue * texture)
+{
+	animation_ = Animation(texture);
+	texture->count_++;
+}
+
 EntityBase::~EntityBase()
 {
-//TODO: use like an event manager or something to release texture, dont access texture manager directly
 	
 }
 
-void EntityBase::update(int row, float deltaTime)
+void EntityBase::update(float deltaTime)
 {
 	animation_.update(deltaTime);
 	setTextureRect(animation_.uvRect);

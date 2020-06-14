@@ -5,6 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "TextureManager.hpp"
+#include "TextureDefs.hpp"
 struct AnimationIndex
 {
 	//default constructor
@@ -37,14 +38,19 @@ public:
 	{};
 	~Animation();
 
+	Textures::TextureNames currentTextureName_;
+	sf::IntRect uvRect;
+
+
 	void update(float deltaTime);
 
-
-	sf::IntRect uvRect;
 	void setAnimationIndex(int startIndex, int endIndex, float animationTime);
+
+	void releaseTexture(void);
 
 
 private:
+
 
 	Textures::TextureValue* texture_;
 	sf::Vector2u imageFrames_;

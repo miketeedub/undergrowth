@@ -1,7 +1,7 @@
 #include "TextureManager.hpp"
 
 namespace Textures {
-	TextureValue* TextureManager::getTexture(TextureEnum textureName)
+	TextureValue* TextureManager::getTexture(TextureNames textureName)
 	{
 		if (textureMap_.find(textureName) != textureMap_.end())
 		{
@@ -22,7 +22,7 @@ namespace Textures {
 		}
 	}
 
-	bool TextureManager::loadTexture(TextureEnum textureName)
+	bool TextureManager::loadTexture(TextureNames textureName)
 	{
 
 		sf::Texture* playerTexture = new sf::Texture();
@@ -40,7 +40,7 @@ namespace Textures {
 		}
 	}
 
-	void TextureManager::spriteReleaseTexture(TextureEnum textureName)
+	void TextureManager::spriteReleaseTexture(TextureNames textureName)
 	{
 		textureMap_[textureName].count_--;
 		if (textureMap_[textureName].count_ == 0)

@@ -9,7 +9,12 @@ Animation::Animation(Textures::TextureValue* texture_)
 	imageFrames_ = texture_->spriteSheetFrames;
 	uvRect.width = texture_->texture->getSize().x / float(imageFrames_.x);
 	uvRect.height = texture_->texture->getSize().y / float(imageFrames_.y);
+	currentTextureName_ = texture_->textureName;
+}
 
+void Animation::releaseTexture(void)
+{
+	
 }
 
 

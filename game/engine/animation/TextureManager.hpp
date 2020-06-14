@@ -19,6 +19,7 @@ namespace Textures {
 
 		sf::Texture* texture;
 		sf::Vector2u spriteSheetFrames;
+		TextureNames textureName;
 		//count for number of active sprites using texture
 		int count_;
 
@@ -36,15 +37,15 @@ namespace Textures {
 		//TODO: load textures dynamically as needed
 		sf::Texture playerTexture;
 
-		std::map<TextureEnum, TextureValue> textureMap_;
+		std::map<TextureNames, TextureValue> textureMap_;
 
-		TextureValue* getTexture(TextureEnum texture);
+		TextureValue* getTexture(TextureNames texture);
 
 		TextureInfo textureInfo_;
 
-		bool loadTexture(TextureEnum textureName);
+		bool loadTexture(TextureNames textureName);
 
-		void spriteReleaseTexture(TextureEnum textureName);
+		void spriteReleaseTexture(TextureNames textureName);
 	};
 
 }

@@ -1,17 +1,21 @@
 #ifndef TEXTURE_ENUM_H
 #define TEXTURE_ENUM_H
 
+#include <SFML/Graphics.hpp>
+
+
 namespace Textures
 {
-
-	enum TextureEnum
+	enum TextureNames
 	{
+		//Add Texture names here
 		MainCharacter_Texture,
 		SomePlant_Texture
 	};
 
-	//TODO: use better path 
+	//Add path defs here
 	#define MAIN_CHARACTER_PATH "spriteImgs/animation_test.png"
+
 
 	struct TextureInfo
 	{
@@ -35,17 +39,17 @@ namespace Textures
 			textureInfo[MainCharacter_Texture] = _TextureInfo(MAIN_CHARACTER_PATH, frameDims(3, 3));
 		};	
 
-		std::string getPath(TextureEnum texture)
+		std::string getPath(TextureNames texture)
 		{
 			return textureInfo[texture].texturePath;
 		}
 
-		sf::Vector2u getFrameDims(TextureEnum texture)
+		sf::Vector2u getFrameDims(TextureNames texture)
 		{
 			return textureInfo[texture].textureFrameDims;
 		}
 
-		std::map<TextureEnum, _TextureInfo> textureInfo;
+		std::map<TextureNames, _TextureInfo> textureInfo;
 	};
 
 }

@@ -63,7 +63,7 @@ entity base will go to both characters and plants, will create abstract factory 
 		//animation.update(0, deltaTime);
 		//player.setTextureRect(animation.uvRect);
 		//player0.setTextureRect(animation.uvRect);
-		player0.update(0, deltaTime);
+		player0.update(deltaTime);
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 		{
