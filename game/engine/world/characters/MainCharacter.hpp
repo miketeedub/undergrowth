@@ -3,7 +3,7 @@
 #define MAIN_CHARACTER_SPRITE
 #include <filesystem>
 #include <direct.h>
-
+#include "Animation.hpp"
 #include <iostream>
 #include "../EntityBase.hpp"
 
@@ -13,18 +13,16 @@ public:
 	MainCharacter(TextureManager* textureMgr)
     : EntityBase(textureMgr)
 	{};
-	MainCharacter(sf::Texture* texture, TextureManager& textures, TextureEnum textureType, sf::Vector2u imageCount, float switchTime) :
-		EntityBase(Animation(texture, imageCount, switchTime), &textures, textureType)
+	MainCharacter(sf::Texture* texture, TextureManager& textures, TextureEnum textureType, sf::Vector2u imageCount) :
+		EntityBase(Animation(texture, imageCount), &textures, textureType)
+		, walkRight_(0,6,.3f)
 	{
 		this->setTexture(*texture);
-		this->animation_.setIndex(0, 6);
-		char buff[128];
-		getcwd(buff, 128);
-		std::cout << std::string(buff);
+		this->animation_.setIndex(0, 6, .3f);
+
 	};
 	
-
-	
+	AnimationIndex walkRight_;
 };
 
 #endif

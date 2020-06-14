@@ -7,16 +7,32 @@
 
 struct AnimationIndex
 {
-	int start = 0;
-	int end= 0;
-	int current = 0;
+	//default constructor
+	AnimationIndex() :
+		start(0)
+		, end(0)
+		, current(0)
+		, animationTime(0)
+	{};
+
+	AnimationIndex(int start, int end, int animationTime) :
+		  start(start)
+		, end(end)
+		, current(0)
+		, animationTime(animationTime)
+	{};
+
+	int start;
+	int end;
+	int current;
+	float animationTime;
 };
 
 class Animation
 {
 public:
 	
-	Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
+	Animation(sf::Texture* texture, sf::Vector2u imageCount);
 	Animation()
 	{};
 	~Animation();
@@ -25,7 +41,7 @@ public:
 
 public:
 	sf::IntRect uvRect;
-	void setIndex(int startIndex, int endIndex);
+	void setIndex(int startIndex, int endIndex, float animationTime);
 private:
 
 	sf::Vector2u imageCount;

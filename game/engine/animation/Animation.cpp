@@ -2,7 +2,7 @@
 #include "Animation.hpp"
 
 
-Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime)
+Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount)
 {
 	this->imageCount = imageCount;
 	this->switchTime = switchTime;
@@ -19,10 +19,11 @@ Animation::~Animation()
 {
 }
 
-void Animation::setIndex(int startIndex, int endIndex)
+void Animation::setIndex(int startIndex, int endIndex, float animationTime)
 {
 	index_.start = startIndex;
 	index_.end = endIndex;
+	index_.animationTime = animationTime;
 	index_.current = startIndex;
 }
 
@@ -36,9 +37,9 @@ void Animation::update(float deltaTime)
 
 	totalTime += deltaTime;
 
-	if (totalTime >= switchTime)
+	if (totalTime >= index_.animationTime)
 	{
-		totalTime -= switchTime;
+		totalTime -= index_.animationTime;
 		currentImage.y = static_cast<int> (index_.current / imageCount.x);
 		currentImage.x = index_.current % imageCount.x;
 		
