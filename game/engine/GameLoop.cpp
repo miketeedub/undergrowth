@@ -35,6 +35,7 @@ entity base will go to both characters and plants, will create abstract factory 
 	//EntityBase player;
 	
 
+
 	//player0.setTexture(textures->playerTexture);
 	//player.setTexture(textures->playerTexture);
 	
