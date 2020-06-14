@@ -23,7 +23,7 @@ void Animation::setIndex(int startIndex, int endIndex)
 {
 	index_.start = startIndex;
 	index_.end = endIndex;
-	index_.current = 0;
+	index_.current = startIndex;
 }
 
 
@@ -46,7 +46,7 @@ void Animation::update(float deltaTime)
 
 		if (index_.current > index_.end)
 		{
-			index_.current = 0;
+			index_.current = index_.start;
 		}
 		
 	}

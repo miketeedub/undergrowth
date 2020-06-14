@@ -9,7 +9,7 @@ enum TextureEnum
 };
 
 //TODO: use better path 
-#define MAIN_CHARACTER_PATH "../spriteImgs/test_guy.png"
+#define MAIN_CHARACTER_PATH "spriteImgs/animation_test.png"
 
 
 #endif

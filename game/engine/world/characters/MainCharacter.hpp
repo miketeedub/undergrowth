@@ -1,6 +1,8 @@
 
 #ifndef MAIN_CHARACTER_SPRITE
 #define MAIN_CHARACTER_SPRITE
+#include <filesystem>
+#include <direct.h>
 
 #include <iostream>
 #include "../EntityBase.hpp"
@@ -15,7 +17,10 @@ public:
 		EntityBase(Animation(texture, imageCount, switchTime), &textures, textureType)
 	{
 		this->setTexture(*texture);
-		this->animation_.setIndex(0, 1);
+		this->animation_.setIndex(0, 6);
+		char buff[128];
+		getcwd(buff, 128);
+		std::cout << std::string(buff);
 	};
 	
 

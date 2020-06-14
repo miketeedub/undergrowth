@@ -28,9 +28,7 @@ class TextureManager
 {
 public:
 	TextureManager()
-	{
-		playerTexture.loadFromFile("../spriteImgs/test_guy.png");
-	};
+	{};
 	//TODO: load textures dynamically as needed
 	sf::Texture playerTexture;
 	
