@@ -18,7 +18,6 @@ void GameLoop::loop(void)
 }
 
 
-
 void GameLoop::run(sf::RenderWindow& window)
 {
 	Textures::TextureManager textures;
@@ -30,7 +29,7 @@ void GameLoop::run(sf::RenderWindow& window)
 /*TODO: create a "Character.hpp" class that inherts from EntityBase and implements pure virtual functions, 
 entity base will go to both characters and plants, will create abstract factory for both plants and characers*/
 
-	player0.setScale(4.0f, 4.0f);
+	player0.setScale(1.0f, 1.0f);
 
 	//EntityBase player;
 	
@@ -67,22 +66,27 @@ entity base will go to both characters and plants, will create abstract factory 
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 		{
-			player0.move(-0.1f, 0.0f);
+			player0.move(-0.1f, 0.0f);		
 			
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 		{
 			player0.move(0.1f, 0.0f);
+			player0.setAnimationIndex(0, 6, .1f);
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 		{
 			player0.move(0.0f, -0.1f);
+			player0.setAnimationIndex(28, 31, .1f);
+
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 		{
 			player0.move(0.0f, 0.1f);
+			player0.setAnimationIndex(16, 20, .1f);
+
 		}
 
 

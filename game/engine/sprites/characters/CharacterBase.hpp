@@ -2,6 +2,7 @@
 #include "../EntityBase.hpp"
 
 
+
 class CharacterBase : public EntityBase
 {
 public:
@@ -11,4 +12,9 @@ public:
 	CharacterBase(Textures::TextureValue* texture) :
 		EntityBase(texture)
 	{};
+
+	bool movingUp_;
+	bool movingDown_;
+	bool movingRight_;
+	bool movingLeft_;
 };

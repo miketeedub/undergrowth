@@ -14,7 +14,8 @@ namespace Textures
 	};
 
 	//Add path defs here
-	#define MAIN_CHARACTER_PATH "spriteImgs/animation_test.png"
+	#define MAIN_CHARACTER_PATH "engine/sprites/animation/sheets/mole_sheet.png"
+
 
 
 	struct TextureInfo
@@ -36,7 +37,7 @@ namespace Textures
 		TextureInfo()
 		{
 			//Add paths and animation frame diminsions here
-			textureInfo[MainCharacter_Texture] = _TextureInfo(MAIN_CHARACTER_PATH, frameDims(3, 3));
+			textureInfo[MainCharacter_Texture] = _TextureInfo(MAIN_CHARACTER_PATH, frameDims(6, 6));
 		};	
 
 		std::string getPath(TextureNames texture)

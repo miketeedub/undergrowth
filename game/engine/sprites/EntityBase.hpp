@@ -18,9 +18,13 @@ public:
 
 	~EntityBase();
 
-	void setAnimationIndex(int start, int end, float animationSpeed);
 	Animation animation_;
+	
+	
 	virtual void update(float deltaTime);
+	
+	void setAnimationIndex(int start, int end, float animationSpeed);
+
 	
 };
 
