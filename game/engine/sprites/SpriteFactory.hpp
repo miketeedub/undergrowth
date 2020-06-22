@@ -8,19 +8,21 @@
 #include "SpriteEnum.hpp"
 #include "TextureManager.hpp"
 #include "EntityBase.hpp"
+#include "TextureDefs.hpp"
 
 class SpriteFactory 
 {
 public:
-	SpriteFactory(Textures::TextureManager* textures) :
-		textures_(textures)
+	SpriteFactory(Textures::TextureManager* characterTextures) :
+		characterTextures_(characterTextures)
 	{};
 
 
 
 public:
-	EntityBase createSprite(SpriteTypes spriteType);
-	Textures::TextureManager* textures_;
+
+	CharacterBase createSprite(CharacterSpriteTypes spriteType);
+	Textures::TextureManager* characterTextures_;
 
 };
 

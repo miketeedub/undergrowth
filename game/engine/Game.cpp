@@ -12,7 +12,7 @@ void Game::initialize()
 
 void Game::run()
 {
-	sf::RenderWindow window(sf::VideoMode(512, 512), "Sky Pirates", sf::Style::Close | sf::Style::Resize);
+	sf::RenderWindow window(sf::VideoMode(512, 512), "Undergrowth", sf::Style::Close | sf::Style::Resize);
 
 
 	GameLoop loop;	

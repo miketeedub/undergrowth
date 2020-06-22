@@ -1,7 +1,13 @@
 #ifndef SPRITE_ENUM
 #define SPRITE_ENUM
 
-enum SpriteTypes
+
+enum PlantSpriteTypes
+{
+
+};
+
+enum CharacterSpriteTypes
 {
 	MainCharacterType,
 	FakeMushroomType,

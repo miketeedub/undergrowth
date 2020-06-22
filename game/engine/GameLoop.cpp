@@ -21,10 +21,11 @@ void GameLoop::loop(void)
 void GameLoop::run(sf::RenderWindow& window)
 {
 	Textures::TextureManager textures;
+	//TODO: make plant textures too
 
 	SpriteFactory spriteFactory(&textures);
 
-	EntityBase player0 = spriteFactory.createSprite(MainCharacterType);
+	CharacterBase player0 = spriteFactory.createSprite(MainCharacterType);
 
 /*TODO: create a "Character.hpp" class that inherts from EntityBase and implements pure virtual functions, 
 entity base will go to both characters and plants, will create abstract factory for both plants and characers*/
@@ -62,30 +63,35 @@ entity base will go to both characters and plants, will create abstract factory 
 		//animation.update(0, deltaTime);
 		//player.setTextureRect(animation.uvRect);
 		//player0.setTextureRect(animation.uvRect);
-		player0.update(deltaTime);
+		player0.updateAnimation(deltaTime);
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 		{
-			player0.move(-0.1f, 0.0f);		
+			player0.move(-0.1f, 0.0f);	
+			player0.setAnimationSlice(Textures::CharacterMovementAnimations::Walk_Left, .05, true);
 			
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 		{
 			player0.move(0.1f, 0.0f);
-			player0.setAnimationIndex(0, 6, .1f);
+			player0.setAnimationSlice(Textures::CharacterMovementAnimations::Walk_Right, .05, true);
+			
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 		{
-			player0.move(0.0f, -0.1f);
-			player0.setAnimationIndex(28, 31, .1f);
 
+
+			player0.move(0.0f, -0.1f);
+			player0.setAnimationSlice(Textures::CharacterMovementAnimations::Walk_Up, .05, true);
+		
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 		{
 			player0.move(0.0f, 0.1f);
-			player0.setAnimationIndex(16, 20, .1f);
+			player0.setAnimationSlice(Textures::CharacterMovementAnimations::Walk_Down, .05, true);
+
 
 		}
 

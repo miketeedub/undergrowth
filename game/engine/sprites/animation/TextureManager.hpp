@@ -7,25 +7,31 @@
 
 namespace Textures {
 
-	struct TextureValue
+	
+	class TextureValue
 	{
+	public:
 		TextureValue()
 		{};
-		TextureValue(sf::Texture* texture, sf::Vector2u frames) :
-			texture(texture)
-			, spriteSheetFrames(frames)
+		TextureValue(TextureInfo* textureInfo) :
+			 textureInfo(textureInfo)
 			, count_(1)
-		{};
+		{
+			if (texture.loadFromFile(textureInfo->getTexturePath()))
+			{}
+			else
+			{
+				//TODO: throw
+			}	
+		};
 
-		sf::Texture* texture;
-		sf::Vector2u spriteSheetFrames;
-		TextureNames textureName;
+		sf::Texture texture;
+		TextureInfo* textureInfo;
 		//count for number of active sprites using texture
 		int count_;
 
 		~TextureValue()
-		{
-		};
+		{};
 	};
 
 
@@ -34,19 +40,22 @@ namespace Textures {
 	public:
 		TextureManager()
 		{};
-		//TODO: load textures dynamically as needed
-		sf::Texture playerTexture;
-
-		std::map<TextureNames, TextureValue> textureMap_;
 
 		TextureValue* getTexture(TextureNames texture);
 
-		TextureInfo textureInfo_;
-
-		bool loadTexture(TextureNames textureName);
+		bool createTexture(TextureNames textureName);
 
 		void spriteReleaseTexture(TextureNames textureName);
+	
+	private:
+		Textures textures_;
+
+		std::map<TextureNames, TextureValue> textureMap_;
+
+
 	};
+
+	
 
 }
 #endif // !TEXTURE_MANAGER_H

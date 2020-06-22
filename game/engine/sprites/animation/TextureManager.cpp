@@ -1,6 +1,8 @@
 #include "TextureManager.hpp"
 
-namespace Textures {
+namespace Textures
+{
+
 	TextureValue* TextureManager::getTexture(TextureNames textureName)
 	{
 		if (textureMap_.find(textureName) != textureMap_.end())
@@ -10,7 +12,7 @@ namespace Textures {
 		}
 		else
 		{
-			if (loadTexture(textureName))
+			if (createTexture(textureName))
 			{
 				getTexture(textureName);
 			}
@@ -22,22 +24,15 @@ namespace Textures {
 		}
 	}
 
-	bool TextureManager::loadTexture(TextureNames textureName)
+
+	bool TextureManager::createTexture(TextureNames textureName)
 	{
+		TextureValue texture(textures_.getTexture(textureName));
 
-		sf::Texture* playerTexture = new sf::Texture();
-		TextureValue texture(playerTexture, textureInfo_.getFrameDims(textureName));
+		textureMap_[textureName] = texture;
 
-
-		if (playerTexture->loadFromFile(textureInfo_.getPath(textureName)))
-		{
-			textureMap_[textureName] = texture;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return true;
+		
 	}
 
 	void TextureManager::spriteReleaseTexture(TextureNames textureName)

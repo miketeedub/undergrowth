@@ -6,17 +6,7 @@
 #include "CharacterBase.hpp"
 #include "TextureManager.hpp"
 
-enum MainCharacterMovementAnimation
-{
-	Walk_Up,
-	Walk_Down,
-	Walk_Left,
-	Walk_Right,
-	Jump_Up,
-	Jump_Down,
-	Jump_Left,
-	Jump_Right
-};
+
 
 
 
@@ -30,12 +20,9 @@ public:
 		CharacterBase(texture)
 		
 	{
-		this->setTexture(*texture->texture);
+		this->setTexture(texture->texture);
 	};
-	
 
-	void updateAnimationDirection(MainCharacterMovementAnimation direction);
-	
 };
 
 #endif

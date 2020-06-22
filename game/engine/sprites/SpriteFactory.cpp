@@ -1,12 +1,11 @@
 #include "SpriteFactory.hpp"
 
 
-
-EntityBase SpriteFactory::createSprite(SpriteTypes spriteType)
+CharacterBase SpriteFactory::createSprite(CharacterSpriteTypes spriteType)
 {
 	switch (spriteType)
 	{
 	case MainCharacterType:
-		return MainCharacter(textures_->getTexture(Textures::MainCharacter_Texture));
+		return MainCharacter(characterTextures_->getTexture(Textures::MainCharacter_Texture));
 	}
 }

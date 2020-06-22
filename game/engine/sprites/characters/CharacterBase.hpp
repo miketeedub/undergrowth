@@ -1,6 +1,9 @@
+#ifndef CHARACTER_BASE_H
+#define CHARACTER_BASE_H
+
 
 #include "../EntityBase.hpp"
-
+#include "TextureDefs.hpp"
 
 
 class CharacterBase : public EntityBase
@@ -13,8 +16,8 @@ public:
 		EntityBase(texture)
 	{};
 
-	bool movingUp_;
-	bool movingDown_;
-	bool movingRight_;
-	bool movingLeft_;
+	void setAnimationSlice(Textures::CharacterMovementAnimations animation, float animationTime, bool oscillateFrames);
+
 };
+
+#endif // !CHARACTER_BASE_H

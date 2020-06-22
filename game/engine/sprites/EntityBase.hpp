@@ -14,18 +14,18 @@ class EntityBase : public sf::Sprite
 public: 	
 	EntityBase()
 	{};
-	EntityBase(Textures::TextureValue* texture);
+	EntityBase(Textures::TextureValue* texture) :
+		textureInfo_(texture)
+		, animation_(texture)
+	{};
 
 	~EntityBase();
 
-	Animation animation_;
-	
-	
-	virtual void update(float deltaTime);
-	
-	void setAnimationIndex(int start, int end, float animationSpeed);
 
-	
+	void updateAnimation(float deltaTime);
+
+	Textures::TextureValue* textureInfo_;
+	Animation animation_;
 };
 
 
