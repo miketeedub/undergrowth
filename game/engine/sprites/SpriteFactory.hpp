@@ -10,6 +10,7 @@
 #include "EntityBase.hpp"
 #include "TextureDefs.hpp"
 
+
 class SpriteFactory 
 {
 public:
@@ -18,10 +19,10 @@ public:
 	{};
 
 
-
 public:
 
-	CharacterBase createSprite(CharacterSpriteTypes spriteType);
+	EntityBase* createSprite(Textures::SpriteNames spriteType);
+
 	Textures::TextureManager* characterTextures_;
 
 };

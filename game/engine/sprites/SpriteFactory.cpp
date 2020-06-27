@@ -1,11 +1,15 @@
 #include "SpriteFactory.hpp"
+#include "SomePlant.hpp"
+#include "Textures.hpp"
 
-
-CharacterBase SpriteFactory::createSprite(CharacterSpriteTypes spriteType)
+EntityBase* SpriteFactory::createSprite(Textures::SpriteNames spriteType)
 {
 	switch (spriteType)
 	{
-	case MainCharacterType:
-		return MainCharacter(characterTextures_->getTexture(Textures::MainCharacter_Texture));
+	case Textures::MainCharacter:
+		return new MainCharacter(characterTextures_->getTexture(Textures::MainCharacter));
+
+	case Textures::SomePlant:
+		return new SomePlant(characterTextures_->getTexture(Textures::SomePlant));
 	}
 }

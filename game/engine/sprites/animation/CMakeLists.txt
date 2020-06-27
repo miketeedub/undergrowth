@@ -10,6 +10,8 @@ SET(HEADERS
 	Animation.hpp
 	TextureManager.hpp
 	TextureDefs.hpp
+	Textures.hpp
+	TexturePaths.hpp
 	)
 
 add_library(Animation STATIC
@@ -18,6 +20,8 @@ add_library(Animation STATIC
 
 
 target_include_directories(Sprites PUBLIC ${CMAKE_SOURCE_DIR}/game/engine/sprites/characters)
+target_include_directories(Sprites PUBLIC ${CMAKE_SOURCE_DIR}/game/engine/sprites/plants)
+
 target_include_directories(Sprites PUBLIC ${CMAKE_SOURCE_DIR}/game/engine/sprites)
 add_subdirectory(sheets)
 

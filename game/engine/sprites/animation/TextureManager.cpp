@@ -3,7 +3,7 @@
 namespace Textures
 {
 
-	TextureValue* TextureManager::getTexture(TextureNames textureName)
+	TextureValue* TextureManager::getTexture(SpriteNames textureName)
 	{
 		if (textureMap_.find(textureName) != textureMap_.end())
 		{
@@ -25,7 +25,7 @@ namespace Textures
 	}
 
 
-	bool TextureManager::createTexture(TextureNames textureName)
+	bool TextureManager::createTexture(SpriteNames textureName)
 	{
 		TextureValue texture(textures_.getTexture(textureName));
 
@@ -35,7 +35,7 @@ namespace Textures
 		
 	}
 
-	void TextureManager::spriteReleaseTexture(TextureNames textureName)
+	void TextureManager::spriteReleaseTexture(SpriteNames textureName)
 	{
 		textureMap_[textureName].count_--;
 		if (textureMap_[textureName].count_ == 0)

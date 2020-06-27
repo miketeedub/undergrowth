@@ -1,18 +1,28 @@
-#ifndef TEXTURE_ENUM_H
-#define TEXTURE_ENUM_H
+#ifndef TEXTURE_DEFS_H
+#define TEXTURE_DEFS_H
 
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
+#include "Textures.hpp"
+#include "TexturePaths.hpp"
+
 
 namespace Textures
 {
 	typedef sf::Vector2u frameDims;
 
+	enum SpriteNames
+	{
+		//Add names here
+		MainCharacter,
+		SomePlant
+	};
+
 	struct SpriteSheetSlice
 	{
 		SpriteSheetSlice() :
 			start(0)
-			,finish(0)
+			, finish(0)
 		{};
 
 		SpriteSheetSlice(int start, int finish) :
@@ -23,36 +33,31 @@ namespace Textures
 		int finish;
 	};
 
+
+	enum PlantMovementAnimations
+	{
+		Sway=1,
+		Shake=2
+	};
+
 	enum CharacterMovementAnimations
 	{
-		Walk_Up,
-		Walk_Down,
-		Walk_Left,
-		Walk_Right,
-		Jump_Up,
-		Jump_Down,
-		Jump_Left,
-		Jump_Right
+		Walk_Up=0,
+		Walk_Down=1,
+		Walk_Left=2,
+		Walk_Right=3,
+		Jump_Up=4,
+		Jump_Down=5,
+		Jump_Left=6,
+		Jump_Right=7
 	};
-
-
-	enum TextureNames
-	{
-		//Add Texture names here
-		MainCharacter_Texture,
-		SomePlant_Texture
-	};
-
-	//Add path defs here
-	#define MAIN_CHARACTER_PATH "engine/sprites/animation/sheets/mole_sheet.png"
-
 
 	class TextureInfo
 	{
 	public:
 		virtual sf::Vector2u getFrameDims() = 0;
-		virtual TextureNames getName() = 0;
-		virtual SpriteSheetSlice getAnimationSlice(CharacterMovementAnimations animation) = 0;
+		virtual SpriteNames getName() = 0;
+		virtual SpriteSheetSlice getAnimationSlice(int animation)=0;
 		virtual std::string getTexturePath() = 0;
 	};
 
@@ -61,7 +66,7 @@ namespace Textures
 	{
 	public:
 
-		CharacterTextureInfo::CharacterTextureInfo(std::string path, frameDims dims, TextureNames name,
+		CharacterTextureInfo::CharacterTextureInfo(std::string path, frameDims dims, SpriteNames name,
 			SpriteSheetSlice WalkUp,
 			SpriteSheetSlice WalkDown,
 			SpriteSheetSlice WalkLeft,
@@ -96,56 +101,71 @@ namespace Textures
 			return dims_;
 		}
 
-		TextureNames getName()
+		SpriteNames getName()
 		{
 			return name_;
 		}
 
-		SpriteSheetSlice getAnimationSlice(CharacterMovementAnimations animation)
+		SpriteSheetSlice getAnimationSlice(int animation)
 		{
 			return animationSlices_[animation];
 		}
 
-		std::unordered_map<CharacterMovementAnimations, SpriteSheetSlice> animationSlices_;
+		std::unordered_map<int, SpriteSheetSlice> animationSlices_;
 	
 		std::string texturePath_;
 		sf::Vector2u dims_;
-		TextureNames name_;
+		SpriteNames name_;
+
 	};
 
-
-	class Textures
+	class PlantTextureInfo : public TextureInfo
 	{
 	public:
 
-		Textures()
+		PlantTextureInfo(std::string path, frameDims dims, SpriteNames name,
+			SpriteSheetSlice Sways,
+			SpriteSheetSlice Shakes)
 		{
-			/*Add Path to sprite sheet, number of animation frames in X and Y directions, and the corresponding animation indexes of each animation sequence
-			*/
-			
-			textureInfo.insert({ MainCharacter_Texture, new CharacterTextureInfo(MAIN_CHARACTER_PATH,
-																			frameDims(6, 6),
-																			MainCharacter_Texture,
-																			SpriteSheetSlice(27, 29), //walk up
-																			SpriteSheetSlice(1, 5),	 //walk down
-																			SpriteSheetSlice(21, 23), //walk left
-																			SpriteSheetSlice(21, 23), //walk right
-																			SpriteSheetSlice(15, 20),
-																			SpriteSheetSlice(4, 5),
-																			SpriteSheetSlice(4, 5),
-																			SpriteSheetSlice(4, 5)) });
+			texturePath_ = path;
+			dims_ = dims;
+			name_ = name;
+			animationSlices_[Sway] = Sways;
+			animationSlices_[Shake] = Shakes;
 
 		};
 
 
-		TextureInfo* getTexture(TextureNames texture)
+		std::string getTexturePath()
 		{
-			return textureInfo[texture];
+			return texturePath_;
 		}
 
-	private:
-		std::unordered_map<TextureNames, TextureInfo*> textureInfo;
+		sf::Vector2u getFrameDims()
+		{
+			return dims_;
+		}
+
+		SpriteNames getName()
+		{
+			return name_;
+		}
+
+		SpriteSheetSlice getAnimationSlice(int animation)
+		{
+			return animationSlices_[animation];
+		}
+
+		std::unordered_map<int, SpriteSheetSlice> animationSlices_;
+
+		std::string texturePath_;
+		sf::Vector2u dims_;
+		SpriteNames name_;
+
 	};
+
+
+	
 }
 
 #endif

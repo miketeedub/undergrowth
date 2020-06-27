@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include "TextureManager.hpp"
 #include "TextureDefs.hpp"
+#include "Textures.hpp"
 
 struct AnimationSequence
 {
@@ -46,9 +47,9 @@ public:
 	{};
 	~Animation();
 
-	Textures::TextureNames currentTextureName_;
-	sf::IntRect uvRect;
+	Textures::SpriteNames currentTextureName_;
 
+	sf::IntRect uvRect;
 
 	void update(float deltaTime);
 

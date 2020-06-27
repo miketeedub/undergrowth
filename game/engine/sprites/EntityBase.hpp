@@ -24,6 +24,9 @@ public:
 
 	void updateAnimation(float deltaTime);
 
+	virtual void setAnimationSlice(Textures::CharacterMovementAnimations animation, float animationTime, bool oscillateFrames) {};
+	virtual void setAnimationSlice(Textures::PlantMovementAnimations animation, float animationTime, bool oscillateFrames) {};
+	
 	Textures::TextureValue* textureInfo_;
 	Animation animation_;
 };

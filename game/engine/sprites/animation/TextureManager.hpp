@@ -3,7 +3,7 @@
 
 
 #include <SFML/Graphics.hpp>
-#include "TextureDefs.hpp"
+#include "Textures.hpp"
 
 namespace Textures {
 
@@ -41,16 +41,16 @@ namespace Textures {
 		TextureManager()
 		{};
 
-		TextureValue* getTexture(TextureNames texture);
+		TextureValue* getTexture(SpriteNames texture);
 
-		bool createTexture(TextureNames textureName);
+		bool createTexture(SpriteNames textureName);
 
-		void spriteReleaseTexture(TextureNames textureName);
+		void spriteReleaseTexture(SpriteNames textureName);
 	
 	private:
 		Textures textures_;
 
-		std::map<TextureNames, TextureValue> textureMap_;
+		std::map<SpriteNames, TextureValue> textureMap_;
 
 
 	};

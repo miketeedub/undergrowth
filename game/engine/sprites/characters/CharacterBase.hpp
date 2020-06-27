@@ -16,7 +16,9 @@ public:
 		EntityBase(texture)
 	{};
 
-	void setAnimationSlice(Textures::CharacterMovementAnimations animation, float animationTime, bool oscillateFrames);
+
+	void setAnimationSlice(Textures::CharacterMovementAnimations animation, float animationTime, bool oscillateFrames) override;
+	//void setAnimationSlice(Textures::PlantMovementAnimations animation, float animationTime, bool oscillateFrames)override {};
 
 };
 
